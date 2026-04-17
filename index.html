@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atul Kumar Verma | Portfolio</title>
+  <meta
+    name="description"
+    content="Atul Kumar Verma is a Full Stack Developer specializing in Laravel, MySQL, REST APIs, and scalable web applications."
+  >
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              ink: "#07111f",
+              forest: "#12314a",
+              moss: "#1d5c63",
+              mint: "#7ed6c1",
+              cream: "#f6efe5",
+              sand: "#ffd9a0",
+              sky: "#d9ecff",
+              coral: "#ff8a65"
+            }
+          },
+          fontFamily: {
+            display: ['"Poppins"', "sans-serif"],
+            body: ['"Manrope"', "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 30px 90px rgba(18, 49, 74, 0.18)",
+            float: "0 20px 50px rgba(7, 17, 31, 0.10)"
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(126, 214, 193, 0.30), transparent 34%),
+        radial-gradient(circle at top right, rgba(255, 138, 101, 0.18), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(217, 236, 255, 0.65), transparent 26%),
+        linear-gradient(180deg, #f7fbff 0%, #fff8f1 52%, #ffffff 100%);
+    }
+
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(18, 49, 74, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 49, 74, 0.05) 1px, transparent 1px);
+      background-size: 42px 42px;
+    }
+
+    .glass-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82));
+      backdrop-filter: blur(18px);
+    }
+
+    .section-wash {
+      background: linear-gradient(135deg, rgba(217, 236, 255, 0.32), rgba(255, 255, 255, 0.7), rgba(246, 239, 229, 0.75));
+    }
+
+    .hero-ring::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 2rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(126, 214, 193, 0.55), rgba(255, 217, 160, 0.45), rgba(217, 236, 255, 0.7));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .soft-orb {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(50px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .animate-fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .animate-fade-up-delay-1 {
+      animation-delay: 0.12s;
+    }
+
+    .animate-fade-up-delay-2 {
+      animation-delay: 0.24s;
+    }
+
+    .animate-fade-up-delay-3 {
+      animation-delay: 0.36s;
+    }
+
+    .animate-fade-up-delay-4 {
+      animation-delay: 0.48s;
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .float-slow {
+      animation: floatSlow 7s ease-in-out infinite;
+    }
+
+    .float-slower {
+      animation: floatSlow 9s ease-in-out infinite reverse;
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 4.5s ease-in-out infinite;
+    }
+
+    .hover-lift {
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 60px rgba(7, 17, 31, 0.14);
+    }
+
+    .hover-chip {
+      transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hover-chip:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(18, 49, 74, 0.12);
+    }
+
+    .mobile-drawer {
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+    }
+
+    .mobile-drawer.is-open {
+      transform: translateX(0);
+    }
+
+    .mobile-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(0, -14px, 0) scale(1.03);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 30px 90px rgba(18, 49, 74, 0.18);
+      }
+      50% {
+        box-shadow: 0 36px 110px rgba(29, 92, 99, 0.22);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .animate-fade-up,
+      .reveal-on-scroll,
+      .float-slow,
+      .float-slower,
+      .pulse-glow {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      .hover-lift,
+      .hover-chip {
+        transition: none !important;
+      }
+
+      .hover-lift:hover,
+      .hover-chip:hover {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="font-body text-brand-ink antialiased">
+  <div class="fixed inset-0 -z-10 grid-pattern opacity-40"></div>
+
+  <header class="sticky top-0 z-50 border-b border-white/70 bg-white/70 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4 lg:px-8">
+      <a href="#home" class="font-display text-xl font-bold tracking-tight text-brand-forest">Atul Kumar Verma</a>
+      <nav class="hidden flex-wrap items-center gap-3 text-sm font-semibold text-brand-forest/75 md:flex">
+        <a href="#about" class="rounded-full px-4 py-2 transition hover:bg-brand-forest hover:text-white">About</a>
+        <a href="#skills" class="rounded-full px-4 py-2 transition hover:bg-brand-forest hover:text-white">Skills</a>
+        <a href="#journey" class="rounded-full px-4 py-2 transition hover:bg-brand-forest hover:text-white">Journey</a>
+        <a href="#projects" class="rounded-full px-4 py-2 transition hover:bg-brand-forest hover:text-white">Projects</a>
+        <a href="#contact" class="rounded-full px-4 py-2 transition hover:bg-brand-forest hover:text-white">Contact</a>
+      </nav>
+      <button
+        id="menu-toggle"
+        type="button"
+        class="inline-flex items-center justify-center rounded-2xl border border-brand-forest/15 bg-white/80 p-3 text-brand-forest shadow-sm transition hover:bg-brand-sky/50 md:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div id="mobile-overlay" class="mobile-overlay fixed inset-0 z-40 bg-brand-ink/45 md:hidden"></div>
+  <aside
+    id="mobile-menu"
+    class="mobile-drawer fixed right-0 top-0 z-50 flex h-full w-[85%] max-w-sm flex-col border-l border-white/20 bg-white/95 p-6 shadow-2xl backdrop-blur-xl md:hidden"
+    aria-hidden="true"
+  >
+    <div class="flex items-center justify-between">
+      <p class="font-display text-xl font-bold text-brand-forest">Menu</p>
+      <button
+        id="menu-close"
+        type="button"
+        class="inline-flex items-center justify-center rounded-2xl border border-brand-forest/15 bg-white p-3 text-brand-forest shadow-sm transition hover:bg-brand-sky/50"
+        aria-label="Close menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+    <div class="mt-8 flex flex-col gap-3 text-base font-semibold text-brand-forest">
+      <a href="#about" class="mobile-link rounded-2xl bg-brand-sky/35 px-5 py-4 transition hover:bg-brand-sky/60">About</a>
+      <a href="#skills" class="mobile-link rounded-2xl bg-brand-sky/35 px-5 py-4 transition hover:bg-brand-sky/60">Skills</a>
+      <a href="#journey" class="mobile-link rounded-2xl bg-brand-sky/35 px-5 py-4 transition hover:bg-brand-sky/60">Journey</a>
+      <a href="#projects" class="mobile-link rounded-2xl bg-brand-sky/35 px-5 py-4 transition hover:bg-brand-sky/60">Projects</a>
+      <a href="#contact" class="mobile-link rounded-2xl bg-brand-sky/35 px-5 py-4 transition hover:bg-brand-sky/60">Contact</a>
+    </div>
+    <div class="mt-8 rounded-[1.5rem] bg-gradient-to-br from-brand-forest to-brand-moss p-5 text-white">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-mint">Connect</p>
+      <div class="mt-4 flex flex-col gap-3 text-sm">
+        <a href="mailto:atulvermalal@gmail.com" class="text-white/85">atulvermalal@gmail.com</a>
+        <a href="https://github.com/atulvermalal" target="_blank" rel="noreferrer" class="text-white/85">github.com/atulvermalal</a>
+        <a href="https://www.linkedin.com/in/atul-kumar-vrm" target="_blank" rel="noreferrer" class="text-white/85">linkedin.com/in/atul-kumar-vrm</a>
+      </div>
+    </div>
+  </aside>
+
+  <main id="home">
+    <section class="mx-auto max-w-7xl px-6 pb-14 pt-16 lg:px-8 lg:pb-20 lg:pt-24">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="animate-fade-up">
+          <span class="inline-flex rounded-full border border-brand-moss/20 bg-white/85 px-4 py-2 text-sm font-semibold text-brand-moss shadow-sm">
+            Atul Kumar Verma | Full Stack Developer
+          </span>
+          <h1 class="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-tight text-brand-ink sm:text-5xl lg:text-7xl animate-fade-up animate-fade-up-delay-1">
+            Full Stack Laravel developer building scalable products, APIs, and high-performance web systems.
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-8 text-brand-forest/80 sm:text-lg animate-fade-up animate-fade-up-delay-2">
+            Full Stack Developer with hands-on experience in Laravel, MySQL, JavaScript, REST API integration,
+            database optimization, secure authentication, and production deployment across live applications.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4 animate-fade-up animate-fade-up-delay-3">
+            <a
+              href="#projects"
+              class="rounded-full bg-gradient-to-r from-brand-forest to-brand-moss px-6 py-3 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:from-brand-moss hover:to-brand-forest"
+            >
+              Explore Projects
+            </a>
+            <a
+              href="./assets/Atul_Kumar_Verma_CV.pdf"
+              class="rounded-full border border-brand-forest/15 bg-white/90 px-6 py-3 text-sm font-bold text-brand-forest transition hover:border-brand-moss hover:bg-brand-sky/50"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Resume
+            </a>
+            <a
+              href="https://github.com/atulvermalal"
+              target="_blank"
+              rel="noreferrer"
+              class="rounded-full border border-brand-forest/15 bg-white/80 px-6 py-3 text-sm font-bold text-brand-forest transition hover:border-brand-moss hover:bg-brand-sky/50"
+            >
+              GitHub Profile
+            </a>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-brand-forest/80 animate-fade-up animate-fade-up-delay-4">
+            <a href="https://www.linkedin.com/in/atul-kumar-vrm" target="_blank" rel="noreferrer" class="hover-chip rounded-full bg-white/80 px-4 py-2 shadow-sm transition hover:bg-brand-sky/60">LinkedIn</a>
+            <a href="mailto:atulvermalal@gmail.com" class="hover-chip rounded-full bg-white/80 px-4 py-2 shadow-sm transition hover:bg-brand-sky/60">Email</a>
+            <a href="tel:+918982651712" class="hover-chip rounded-full bg-white/80 px-4 py-2 shadow-sm transition hover:bg-brand-sky/60">Call</a>
+          </div>
+          <div class="mt-10 grid gap-4 sm:grid-cols-3">
+            <div class="glass-card hover-lift animate-fade-up animate-fade-up-delay-2 rounded-3xl border border-white/80 p-5 shadow-float">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-moss">Experience</p>
+              <p class="mt-3 text-sm leading-7 text-brand-forest/80">Promoted from Intern to Permanent Developer at Maestros Infotech due to strong performance.</p>
+            </div>
+            <div class="glass-card hover-lift animate-fade-up animate-fade-up-delay-3 rounded-3xl border border-white/80 p-5 shadow-float">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-moss">Focus</p>
+              <p class="mt-3 text-sm leading-7 text-brand-forest/80">Laravel modules, REST APIs, role-based access, query optimization, and server deployment.</p>
+            </div>
+            <div class="glass-card hover-lift animate-fade-up animate-fade-up-delay-4 rounded-3xl border border-white/80 p-5 shadow-float">
+              <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-moss">Location</p>
+              <p class="mt-3 text-sm leading-7 text-brand-forest/80">Bhopal, Madhya Pradesh, India.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative hero-ring animate-fade-up animate-fade-up-delay-2">
+          <div class="soft-orb float-slow -left-8 top-8 h-24 w-24 bg-brand-mint/60"></div>
+          <div class="soft-orb float-slower -right-6 bottom-10 h-28 w-28 bg-brand-sand/60"></div>
+          <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-brand-sky/70 via-white to-brand-sand/60 blur-2xl"></div>
+          <div class="glass-card pulse-glow relative overflow-hidden rounded-[2rem] border border-white/80 p-6 shadow-glow sm:p-8">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.22em] text-brand-moss">Profile Snapshot</p>
+                <h2 class="mt-3 font-display text-3xl font-bold text-brand-forest">Atul Kumar Verma</h2>
+              </div>
+              <div class="rounded-2xl bg-brand-forest px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-white">
+                Open to Work
+              </div>
+            </div>
+            <div class="mt-8 space-y-4">
+              <div class="rounded-2xl bg-gradient-to-br from-brand-cream to-brand-sky/40 p-5">
+                <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Summary</p>
+                <p class="mt-2 text-sm leading-7 text-brand-forest/80">
+                  Skilled in Laravel, MySQL, JavaScript, HTML, CSS, Git, REST APIs, and deployment. Looking to
+                  contribute to high-performance backend systems and full-stack projects.
+                </p>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-brand-forest/10 bg-white/70 p-5">
+                  <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Current Role</p>
+                  <p class="mt-2 text-sm leading-7 text-brand-forest/80">Full Stack Developer at Maestros Infotech Services LLP.</p>
+                </div>
+                <div class="rounded-2xl border border-brand-forest/10 bg-white/70 p-5">
+                  <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Interests</p>
+                  <p class="mt-2 text-sm leading-7 text-brand-forest/80">Scalable architecture, API security, data modelling, and performance optimization.</p>
+                </div>
+              </div>
+              <div class="rounded-2xl bg-gradient-to-br from-brand-forest to-brand-moss p-6 text-white">
+                <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">Core Stack</p>
+                <p class="mt-2 text-sm leading-7 text-white/80">
+                  PHP, Laravel, MySQL, JavaScript, jQuery, AJAX, Blade, Tailwind CSS, Git, Postman, Apache, cPanel.
+                </p>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-3">
+                <div class="rounded-2xl border border-brand-forest/10 bg-white/70 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Current</p>
+                  <p class="mt-2 text-lg font-bold text-brand-forest">2024 - Now</p>
+                </div>
+                <div class="rounded-2xl border border-brand-forest/10 bg-white/70 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Education</p>
+                  <p class="mt-2 text-lg font-bold text-brand-forest">B.E. CSE</p>
+                </div>
+                <div class="rounded-2xl border border-brand-forest/10 bg-white/70 p-4">
+                  <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Strength</p>
+                  <p class="mt-2 text-lg font-bold text-brand-forest">APIs + Laravel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="reveal-on-scroll mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+      <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="rounded-[2rem] bg-gradient-to-br from-brand-forest via-brand-moss to-brand-forest p-8 text-white shadow-glow">
+          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-mint">About Me</p>
+          <h2 class="mt-4 font-display text-3xl font-bold sm:text-4xl">Backend strength with full-stack execution on real production systems.</h2>
+          <p class="mt-6 text-sm leading-8 text-white/80 sm:text-base">
+            I build Laravel-based modules, API integrations, secure authentication systems, optimized database structures,
+            and production-ready web features while collaborating closely with UI teams using JavaScript, AJAX, and Blade.
+          </p>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+          <article class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Current Experience</p>
+            <p class="mt-4 text-sm leading-7 text-brand-forest/80">
+              Full Stack Developer since February 2024 after joining as a Full Stack Developer Intern in November 2023.
+            </p>
+          </article>
+          <article class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Specialization</p>
+            <p class="mt-4 text-sm leading-7 text-brand-forest/80">
+              Laravel development, REST APIs, role-based access modules, debugging, optimization, and deployment support.
+            </p>
+          </article>
+          <article class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Area of Interest</p>
+            <p class="mt-4 text-sm leading-7 text-brand-forest/80">
+              Full stack web application development, REST API integration and security, scalable architecture, and query optimization.
+            </p>
+          </article>
+          <article class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Soft Skills</p>
+            <p class="mt-4 text-sm leading-7 text-brand-forest/80">
+              Strong communication, team collaboration, eager to learn, attention to detail, problem solving, and proactive attitude.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="reveal-on-scroll mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-moss">Skills</p>
+          <h2 class="mt-3 font-display text-3xl font-bold text-brand-forest sm:text-4xl">Technical skills used across backend, frontend, APIs, and deployment.</h2>
+        </div>
+        <p class="max-w-xl text-sm leading-7 text-brand-forest/75">
+          A practical stack shaped by live client work, internal products, debugging, integrations, and production support.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+          <h3 class="font-display text-xl font-bold text-brand-forest">Backend</h3>
+          <p class="mt-3 text-sm leading-7 text-brand-forest/80">PHP, Laravel, REST API Development, MVC Architecture, OOP, CRUD, Authentication and Authorization.</p>
+        </div>
+        <div class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+          <h3 class="font-display text-xl font-bold text-brand-forest">Frontend</h3>
+          <p class="mt-3 text-sm leading-7 text-brand-forest/80">HTML5, CSS3, JavaScript, jQuery, AJAX, Blade, Bootstrap, and Tailwind CSS.</p>
+        </div>
+        <div class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+          <h3 class="font-display text-xl font-bold text-brand-forest">Database &amp; Tools</h3>
+          <p class="mt-3 text-sm leading-7 text-brand-forest/80">MySQL, Git, GitHub, VS Code, Postman, debugging, performance optimization, and query tuning.</p>
+        </div>
+        <div class="glass-card hover-lift rounded-[2rem] border border-white/80 p-6 shadow-float">
+          <h3 class="font-display text-xl font-bold text-brand-forest">Deployment &amp; Integration</h3>
+          <p class="mt-3 text-sm leading-7 text-brand-forest/80">Apache, cPanel, Hostinger, payment gateway APIs, SMS APIs, Google Maps API, and third-party integrations.</p>
+        </div>
+      </div>
+      <div class="mt-8 rounded-[2rem] border border-white/80 bg-gradient-to-r from-white/80 via-brand-sky/40 to-brand-cream/70 p-6 shadow-float">
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Toolbox Snapshot</p>
+        <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold text-brand-forest/85">
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">Laravel</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">PHP</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">MySQL</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">REST APIs</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">JavaScript</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">AJAX</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">Tailwind CSS</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">GitHub</span>
+          <span class="hover-chip rounded-full bg-white px-4 py-2 shadow-sm">Postman</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey" class="reveal-on-scroll mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+      <div class="section-wash rounded-[2.5rem] border border-white/80 p-8 shadow-float lg:p-10">
+        <div class="max-w-3xl">
+          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-moss">Journey</p>
+          <h2 class="mt-3 font-display text-3xl font-bold text-brand-forest sm:text-4xl">Education, experience, and growth shaped by real product work.</h2>
+          <p class="mt-4 text-sm leading-8 text-brand-forest/75 sm:text-base">
+            My journey combines computer science education, practical internship learning, live Laravel product work, and
+            continued growth through scalable application development and deployment.
+          </p>
+        </div>
+        <div class="mt-10 grid gap-6 lg:grid-cols-3">
+          <article class="hover-lift rounded-[2rem] bg-white/80 p-6 shadow-float">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Education</p>
+            <h3 class="mt-3 text-lg font-bold text-brand-forest">B.E. in Computer Science Engineering</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-forest/75">Sagar Institute of Research Technology and Sciences, Bhopal. Graduation: June 2020. CGPA: 7.49.</p>
+          </article>
+          <article class="hover-lift rounded-[2rem] bg-white/80 p-6 shadow-float">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Schooling</p>
+            <h3 class="mt-3 text-lg font-bold text-brand-forest">Academic foundation in Rewa, Madhya Pradesh</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-forest/75">12th in June 2016 with 71.2% and 10th in June 2014 with 75.6% from Saraswati Shishu Mandir Lalgaon.</p>
+          </article>
+          <article class="hover-lift rounded-[2rem] bg-white/80 p-6 shadow-float">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-moss">Professional Growth</p>
+            <h3 class="mt-3 text-lg font-bold text-brand-forest">Intern to Full Stack Developer</h3>
+            <p class="mt-3 text-sm leading-7 text-brand-forest/75">Joined Maestros Infotech as an intern and transitioned into a permanent developer role through strong performance.</p>
+          </article>
+        </div>
+        <div class="mt-8 rounded-[2rem] border border-white/80 bg-white/70 p-6 shadow-float">
+          <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Career Timeline</p>
+          <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <div class="rounded-2xl bg-brand-cream/70 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">June 2020</p>
+              <p class="mt-2 font-bold text-brand-forest">B.E. Completed</p>
+              <p class="mt-2 text-sm leading-7 text-brand-forest/75">Completed Computer Science Engineering from SIRT, Bhopal.</p>
+            </div>
+            <div class="rounded-2xl bg-brand-sky/60 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Nov 2023</p>
+              <p class="mt-2 font-bold text-brand-forest">Started Internship</p>
+              <p class="mt-2 text-sm leading-7 text-brand-forest/75">Joined Maestros Infotech and started hands-on Laravel development work.</p>
+            </div>
+            <div class="rounded-2xl bg-brand-cream/70 p-5">
+              <p class="text-xs font-bold uppercase tracking-[0.2em] text-brand-moss">Feb 2024 - Present</p>
+              <p class="mt-2 font-bold text-brand-forest">Full Stack Developer</p>
+              <p class="mt-2 text-sm leading-7 text-brand-forest/75">Handling modules, APIs, optimization, deployment, and production debugging.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal-on-scroll mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-moss">Portfolio Highlights</p>
+          <h2 class="mt-3 font-display text-3xl font-bold text-brand-forest sm:text-4xl">Selected projects and platforms I have contributed to.</h2>
+        </div>
+        <a
+          href="./assets/Atul_Kumar_Verma_CV.pdf"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex w-fit rounded-full border border-brand-forest/15 bg-white/90 px-5 py-3 text-sm font-bold text-brand-forest transition hover:border-brand-moss hover:bg-brand-sky/50"
+        >
+          View CV PDF
+        </a>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        <article class="hover-lift overflow-hidden rounded-[2rem] border border-white/80 bg-white/90 shadow-float">
+          <div class="bg-gradient-to-r from-brand-forest to-brand-moss px-6 py-5 text-white">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">Government Platform</p>
+            <h3 class="mt-2 font-display text-2xl font-bold">M.P. Excise ICCC</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-sm leading-7 text-brand-forest/80">
+              Contributed to backend and frontend enhancements for a government-level integrated control and command centre
+              system with dashboards, user management, data handling, bug fixing, and workflow optimization.
+            </p>
+          </div>
+        </article>
+        <article class="hover-lift overflow-hidden rounded-[2rem] border border-white/80 bg-white/90 shadow-float">
+          <div class="bg-gradient-to-r from-brand-moss to-brand-coral px-6 py-5 text-white">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-cream">Service Platform</p>
+            <h3 class="mt-2 font-display text-2xl font-bold">YANN</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-sm leading-7 text-brand-forest/80">
+              Worked on service listing modules, user flows, UI and UX improvements, and API integration to ensure smooth
+              platform functionality across pages and user interactions.
+            </p>
+          </div>
+        </article>
+        <article class="hover-lift overflow-hidden rounded-[2rem] border border-white/80 bg-white/90 shadow-float">
+          <div class="bg-gradient-to-r from-brand-ink to-brand-forest px-6 py-5 text-white">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-sand">Exam Management</p>
+            <h3 class="mt-2 font-display text-2xl font-bold">STKEP Railway Exam System</h3>
+          </div>
+          <div class="p-6">
+            <p class="text-sm leading-7 text-brand-forest/80">
+              Built a Laravel-based exam management system with user authentication, REST APIs, admin panel, exam modules,
+              results handling, and optimized MySQL architecture for scalable usage.
+            </p>
+          </div>
+        </article>
+      </div>
+      <div class="glass-card mt-6 rounded-[2rem] border border-white/80 p-6 shadow-float">
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Other Client &amp; Internal Work</p>
+        <p class="mt-4 text-sm leading-8 text-brand-forest/80">
+          Also contributed to factorybuying.in, bigvaletparking.com, credaash.com, gattuwala.com, gfspreports.com, and
+          playerssport.in with feature development, module enhancement, debugging, performance optimization, and deployment activities.
+        </p>
+      </div>
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <div class="hover-lift rounded-[2rem] border border-white/80 bg-gradient-to-br from-brand-sky/50 to-white p-6 shadow-float">
+          <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">What I Deliver</p>
+          <p class="mt-3 text-sm leading-8 text-brand-forest/80">Production-ready modules, optimized queries, secure access control, and dependable backend integrations.</p>
+        </div>
+        <div class="hover-lift rounded-[2rem] border border-white/80 bg-gradient-to-br from-brand-cream to-white p-6 shadow-float">
+          <p class="text-sm font-bold uppercase tracking-[0.2em] text-brand-moss">Work Style</p>
+          <p class="mt-3 text-sm leading-8 text-brand-forest/80">Collaborative, detail-focused, and practical with strong interest in scalable systems and smooth user-facing outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal-on-scroll mx-auto max-w-7xl px-6 py-14 lg:px-8 lg:py-20">
+      <div class="rounded-[2.5rem] bg-gradient-to-br from-brand-ink via-brand-forest to-brand-moss p-8 text-white shadow-glow sm:p-10 lg:p-12">
+        <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-mint">Contact</p>
+        <div class="mt-4 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-2xl">
+            <h2 class="font-display text-3xl font-bold sm:text-4xl">Let&apos;s build scalable web products and better user experiences.</h2>
+            <p class="mt-4 text-sm leading-8 text-white/80 sm:text-base">
+              Based in Bhopal, Madhya Pradesh and open to full-stack development opportunities focused on Laravel,
+              backend systems, APIs, and scalable web products.
+            </p>
+          </div>
+          <a
+            href="mailto:atulvermalal@gmail.com"
+            class="inline-flex w-fit rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-forest transition hover:bg-brand-sand"
+          >
+            Email Me
+          </a>
+        </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          <div class="hover-lift rounded-2xl border border-white/15 bg-white/10 p-5">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">Phone</p>
+            <p class="mt-2 text-sm text-white/85">+91-8982651712</p>
+          </div>
+          <div class="hover-lift rounded-2xl border border-white/15 bg-white/10 p-5">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">Email</p>
+            <p class="mt-2 text-sm text-white/85">atulvermalal@gmail.com</p>
+          </div>
+          <div class="hover-lift rounded-2xl border border-white/15 bg-white/10 p-5">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">LinkedIn</p>
+            <a class="mt-2 block text-sm text-white/85 underline decoration-white/30 underline-offset-4" href="https://www.linkedin.com/in/atul-kumar-vrm" target="_blank" rel="noreferrer">linkedin.com/in/atul-kumar-vrm</a>
+          </div>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          <div class="hover-lift rounded-2xl border border-white/15 bg-white/10 p-5">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">GitHub</p>
+            <a class="mt-2 block text-sm text-white/85 underline decoration-white/30 underline-offset-4" href="https://github.com/atulvermalal" target="_blank" rel="noreferrer">github.com/atulvermalal</a>
+          </div>
+          <div class="hover-lift rounded-2xl border border-white/15 bg-white/10 p-5">
+            <p class="text-xs font-bold uppercase tracking-[0.22em] text-brand-mint">Resume</p>
+            <a class="mt-2 block text-sm text-white/85 underline decoration-white/30 underline-offset-4" href="./assets/Atul_Kumar_Verma_CV.pdf" target="_blank" rel="noreferrer">Open downloadable CV PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const revealItems = document.querySelectorAll(".reveal-on-scroll");
+    const menuToggle = document.querySelector("#menu-toggle");
+    const menuClose = document.querySelector("#menu-close");
+    const mobileMenu = document.querySelector("#mobile-menu");
+    const mobileOverlay = document.querySelector("#mobile-overlay");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    const openMenu = () => {
+      mobileMenu.classList.add("is-open");
+      mobileOverlay.classList.add("is-open");
+      menuToggle.setAttribute("aria-expanded", "true");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      document.body.classList.add("overflow-hidden");
+    };
+
+    const closeMenu = () => {
+      mobileMenu.classList.remove("is-open");
+      mobileOverlay.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("overflow-hidden");
+    };
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.16,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("revealed"));
+    }
+
+    if (menuToggle && menuClose && mobileMenu && mobileOverlay) {
+      menuToggle.addEventListener("click", openMenu);
+      menuClose.addEventListener("click", closeMenu);
+      mobileOverlay.addEventListener("click", closeMenu);
+      mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
